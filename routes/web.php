@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome')->name('welcome');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/room','RoomController');
+Route::resource('/filiere','SectorController');
+Route::resource('/etudiant','StudentController');
+Route::resource('/niveau','NiveauController');

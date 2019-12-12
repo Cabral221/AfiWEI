@@ -1,0 +1,30 @@
+.bg-primary {
+    background-color: #091268e1!important;
+}
+
+.btn-primary {
+    color:  #ffffff!important;
+    background-color:  #091268e1!important;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #850505;
+}
+
+.bg-info {
+    background-color:  #09136856!important;
+}
+
+.footer {
+    bottom: 0;
+    padding: 30px 30px;
+    color: white;
+    background-color: #850505;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
