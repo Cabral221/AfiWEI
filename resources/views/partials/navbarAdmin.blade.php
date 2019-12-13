@@ -4,7 +4,6 @@
     <div class="row justify-content-center">
         <a href="{{ route('home') }}" class="btn btn-danger mr-2">Chambres</a>
         <a href="{{ route('etudiant.index') }}" class="btn btn-danger mr-2">Étudiants</a>
-        <a href="{{ route('filiere.index') }}" class="btn btn-danger mr-2">Filiéres</a>
         <a href="{{ route('niveau.index') }}" class="btn btn-danger mr-2">Niveaux</a>
     </div>
 </div>

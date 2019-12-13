@@ -13,7 +13,7 @@
         <ul>
             @if ($room->students()->count() > 0)
             @foreach ($room->students as $student)
-                <li>{{ $student->firstname }} - {{ $student->lastname }} - {{ $student->niveau->sigle }} - {{ $student->sector->sigle }} </li>
+                <li>{{ $student->firstname }} - {{ $student->lastname }} - {{ $student->niveau->sigle }}</li>
                 @endforeach
             @endif
         </ul>

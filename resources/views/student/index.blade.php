@@ -3,7 +3,7 @@
 
 @section('container')
 <div class="container">
-    <h2>Gestion des étidiants</h2>
+    <h2>Gestion des étudiants</h2>
     <a href="{{ route('home') }}" class="btn btn-dark mb-3">Retour</a>
     <div class="row">
         <div class="col-md-3">
@@ -17,19 +17,6 @@
                 <div class="form-group {{ $errors->has('firstname') ? 'has-error' : '' }}">
                     <input type="text" name="firstname" id="" class="form-control" placeholder="Prénom">
                     {!! $errors->first('firstname','<p class="help-block text-danger">:message</p>') !!}
-                </div>
-                <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
-                    <input type="number" name="phone" id="" class="form-control" placeholder="Téléphone">
-                    {!! $errors->first('phone','<p class="help-block text-danger">:message</p>') !!}
-                </div>
-                <div class="form-group {{ $errors->has('filiere') ? 'has-error' : '' }}">
-                    <select name="filiere" id="" class="form-control">
-                        <option default value="">Selectionner une filiére</option>
-                        @foreach ($sectors as $sector)
-                        <option value="{{ $sector->id }}">{{ $sector->libele }}</option>
-                        @endforeach
-                    </select>
-                    {!! $errors->first('filiere','<p class="help-block text-danger">:message</p>') !!}
                 </div>
                 <div class="form-group {{ $errors->has('niveau') ? 'has-error' : '' }}">
                     <select name="niveau" id="" class="form-control">
@@ -62,7 +49,6 @@
                         <th>#ID</th>
                         <th>Nom</th>
                         <th>Prénom</th>
-                        <th>Filiere</th>
                         <th>Niveau</th>
                         <th>Chambre</th>
                         <th>Action</th>
@@ -73,7 +59,6 @@
                                 <td># {{ $student->id }}</td>
                                 <td>{{ $student->lastname }}</td>
                                 <td>{{ $student->firstname }}</td>
-                                <td>{{ $student->sector->sigle }}</td>
                                 <td>{{ $student->niveau->libele }}</td>
                                 <td>{{ $student->room->libele ?? 'NEANT' }}</td>
                                 <td>

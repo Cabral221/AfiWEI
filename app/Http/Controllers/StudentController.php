@@ -27,11 +27,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $sectors = Sector::all();
+        // $sectors = Sector::all();
         $niveaux = Niveau::all();
         $rooms = Room::getDisponible();
-        $students = Student::with('sector')->get();
-        return view('student.index', compact('sectors','niveaux','rooms','students'));
+        $students = Student::all();
+        return view('student.index', compact('niveaux','rooms','students'));
     }
 
     /**
@@ -56,8 +56,6 @@ class StudentController extends Controller
         $this->validate($request,[
             'lastname' => 'required|min:2',
             'firstname' => 'required|min:2',
-            'phone' => 'required|max:99999789999999',
-            'filiere' => 'required',
             'niveau' => 'required',
             'room' => 'required',
         ]);
@@ -65,8 +63,6 @@ class StudentController extends Controller
         Student::create([
             'lastname' => $request->lastname,
             'firstname' => $request->firstname,
-            'phone' => $request->phone,
-            'sector_id' => $request->filiere,
             'niveau_id' => $request->niveau,
             'room_id' => $request->room,
         ]);
@@ -93,10 +89,10 @@ class StudentController extends Controller
     public function edit($student)
     {
         $student = Student::find($student);
-        $sectors = Sector::all();
+        // $sectors = Sector::all();
         $rooms = Room::all();
-        $niveaux = Sector::all();
-        return view('student.edit',compact('student','sectors','rooms','niveaux'));
+        $niveaux = Niveau::all();
+        return view('student.edit',compact('student','rooms','niveaux'));
     }
 
     /**
@@ -111,8 +107,6 @@ class StudentController extends Controller
         $this->validate($request,[
             'lastname' => 'required|min:2',
             'firstname' => 'required|min:2',
-            'phone' => 'required|max:99999789999999',
-            'filiere' => 'required',
             'niveau' => 'required',
             'room' => 'required',
         ]);
@@ -120,8 +114,6 @@ class StudentController extends Controller
         Student::find($id)->update([
             'lastname' => $request->lastname,
             'firstname' => $request->firstname,
-            'phone' => $request->phone,
-            'sector_id' => $request->filiere,
             'niveau_id' => $request->niveau,
             'room_id' => $request->room,
         ]);

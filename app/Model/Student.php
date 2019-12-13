@@ -10,10 +10,6 @@ class Student extends Model
 {
     protected $fillable = ['lastname','firstname','phone','sector_id','niveau_id','room_id'];
     
-    public function sector()
-    {
-        return $this->belongsTo(Sector::class,'sector_id');
-    }
     
     public function room()
     {
