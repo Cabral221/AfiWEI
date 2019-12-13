@@ -15,14 +15,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // // Creation des Chambres
-        for ($i=1; $i < 23; $i++) { 
-            Room::create([
-                'libele' => 'chambre '.$i,
-                'qntMax' => 5,
-            ]);
+        for ($i=23; $i < 43; $i++) { 
+            if($i == 32 || $i == 34){
+                Room::create([
+                    'libele' => 'chambre '.$i,
+                    'qntMax' => 6,
+                ]);
+            }else{
+                Room::create([
+                    'libele' => 'chambre '.$i,
+                    'qntMax' => 5,
+                ]);
+            }
         }
 
-        // //Creation des niveaux d'etudes Licence
+        //Creation des niveaux d'etudes Licence
         // for ($i=1; $i < 4; $i++) { 
         //     Niveau::create([
         //         'libele' => 'Licence '.$i,
@@ -37,14 +44,6 @@ class DatabaseSeeder extends Seeder
         //     ]);
         // }
 
-        // //Creation des filiéres
-        // Sector::create(['libele' => 'Banquue Finances Assurances','sigle' => 'BAF']);
-        // Sector::create(['libele' => 'Gestion des resources humaines','sigle' => 'GRH']);
-        // Sector::create(['libele' => 'Genie Logiciel','sigle' => 'GELO']);
-        // Sector::create(['libele' => 'Informatiques et réseaux','sigle' => 'IR']);
-        // Sector::create(['libele' => 'Management des affaires internationales','sigle' => 'MAI']);
-        // Sector::create(['libele' => 'Marketing Management Communication','sigle' => 'MMC']);
-        // Sector::create(['libele' => 'Systéme réseaux et telecom','sigle' => 'SRT']);
 
 
     }
