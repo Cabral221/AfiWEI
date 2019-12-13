@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // // Creation des Chambres
-        for ($i=23; $i < 43; $i++) { 
+        for ($i=1; $i < 43; $i++) { 
             if($i == 32 || $i == 34){
                 Room::create([
                     'libele' => 'chambre '.$i,
@@ -30,19 +30,19 @@ class DatabaseSeeder extends Seeder
         }
 
         //Creation des niveaux d'etudes Licence
-        // for ($i=1; $i < 4; $i++) { 
-        //     Niveau::create([
-        //         'libele' => 'Licence '.$i,
-        //         'sigle' => 'L'.$i,
-        //     ]);
-        // }
-        // //Creation des niveaux d'etudes Master
-        // for ($i=1; $i < 3; $i++) { 
-        //     Niveau::create([
-        //         'libele' => 'Master '.$i,
-        //         'sigle' => 'M'.$i,
-        //     ]);
-        // }
+        for ($i=1; $i < 4; $i++) { 
+            Niveau::create([
+                'libele' => 'Licence '.$i,
+                'sigle' => 'L'.$i,
+            ]);
+        }
+        //Creation des niveaux d'etudes Master
+        for ($i=1; $i < 3; $i++) { 
+            Niveau::create([
+                'libele' => 'Master '.$i,
+                'sigle' => 'M'.$i,
+            ]);
+        }
 
 
 
