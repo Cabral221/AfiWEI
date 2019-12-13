@@ -24,7 +24,6 @@ class RoomController extends Controller
      */
     public function index()
     {
-        
         return view('room.index');
     }
 
@@ -47,10 +46,12 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'libele' => 'required|min:2'
+            'libele' => 'required|min:2',
+            'qntMax' => 'required|min:5|max:6'
         ]);
         $room = new Room();
         $room->libele = $request->libele;
+        $room->qntMax = $request->qntMax;
         $room->save();
         return redirect()->back();
     }
@@ -62,8 +63,10 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+        $card = 12;
+        $room = Room::find($id);
+        return view('room.show', compact('room','card'));
     }
 
     /**
@@ -74,7 +77,8 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        $room = Room::find($id);
+        return view('room.edit', compact('room'));
     }
 
     /**
@@ -86,7 +90,15 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'libele' => 'required|min:2',
+            'qntMax' => 'required|max:6'
+        ]);
+        $room = Room::find($id);
+        $room->libele = $request->libele;
+        $room->qntMax = $request->qntMax;
+        $room->save();
+        return redirect(route('home'));
     }
 
     /**
@@ -97,6 +109,8 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $room = Room::find($id);
+        $room->delete();
+        return redirect()->back();
     }
 }

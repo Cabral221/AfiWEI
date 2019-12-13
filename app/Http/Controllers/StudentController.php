@@ -93,7 +93,10 @@ class StudentController extends Controller
     public function edit($student)
     {
         $student = Student::find($student);
-        return view('student.edit',compact('student'));
+        $sectors = Sector::all();
+        $rooms = Room::all();
+        $niveaux = Sector::all();
+        return view('student.edit',compact('student','sectors','rooms','niveaux'));
     }
 
     /**
@@ -103,9 +106,27 @@ class StudentController extends Controller
      * @param  \App\Model\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'lastname' => 'required|min:2',
+            'firstname' => 'required|min:2',
+            'phone' => 'required|max:99999789999999',
+            'filiere' => 'required',
+            'niveau' => 'required',
+            'room' => 'required',
+        ]);
+        // dd($id);
+        Student::find($id)->update([
+            'lastname' => $request->lastname,
+            'firstname' => $request->firstname,
+            'phone' => $request->phone,
+            'sector_id' => $request->filiere,
+            'niveau_id' => $request->niveau,
+            'room_id' => $request->room,
+        ]);
+        // dd($id->lastname);
+        return redirect()->route('etudiant.index');
     }
 
     /**
@@ -114,8 +135,10 @@ class StudentController extends Controller
      * @param  \App\Model\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->back();
     }
 }

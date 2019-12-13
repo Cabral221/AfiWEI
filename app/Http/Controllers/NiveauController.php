@@ -99,6 +99,8 @@ class NiveauController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $niveau = Niveau::find($id);
+        $niveau->delete();
+        return redirect()->back();
     }
 }

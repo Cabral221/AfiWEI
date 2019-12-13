@@ -77,8 +77,18 @@
                                 <td>{{ $student->niveau->libele }}</td>
                                 <td>{{ $student->room->libele ?? 'NEANT' }}</td>
                                 <td>
-                                    <a href="{{ route('etudiant.edit',$student) }}" class="btn btn-warning">Modifier</a>
-                                    <a href="#" class="btn btn-danger">Supprimer</a>
+                                    <a href="{{ route('etudiant.edit',$student->id) }}" class="btn btn-warning">Modifier</a>
+                                <a href="#" class="btn btn-danger" onclick="if(confirm('Etes-vous sûr ?'))
+                                { 
+                                  event.preventDefault();
+                                  document.getElementById('delete-form-{{ $student->id }}').submit(); 
+                                }else{
+                                  event.preventDefault();
+                                }">Supprimer</a>
+                                    <form action="{{ route('etudiant.destroy',$student->id) }}" method="post" id="delete-form-{{ $student->id }}" style="display: none;">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

@@ -99,6 +99,8 @@ class SectorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sector = Sector::find($id);
+        $sector->delete();
+        return redirect()->back();
     }
 }

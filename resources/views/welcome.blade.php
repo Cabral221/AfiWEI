@@ -13,13 +13,12 @@ AFI l'Université de l'Entreprise / Weekend integration
     <div class="jumbotron-fluid justify-content-center"><h1 class="text-danger text-center">AFI l'UE Weekend Integration</h1></div>
 </div>
 <div class="container">
+    <h4 class="text-center">Organisation des chambres par groupes</h4>
     <div class="row">
-        <h1 class="text-center">Voici l'organisation des chambres par groupes</h1>
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-            <div class="grid">
-                @foreach ($rooms as $room)
-                    @include('room/_card',$room)
+        <div class="col-md-12">
+            <div class="row">
+                @foreach ($rooms as $k => $room)
+                    @include('room/_card',[$room,$card])
                 @endforeach
             </div>
         </div>

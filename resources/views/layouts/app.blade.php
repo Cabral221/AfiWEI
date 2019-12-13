@@ -77,10 +77,10 @@
         <main class="mt-0">
             @yield('container')
         </main>
-        <div class="footer foote">
+        <div class="footer footer-fixed-bottom">
             <div class="container">
                 <div class="row justify-content-center">
-                    &copy;; Copyright Amical des étudiants de AFI l'UE 2019
+                    &copy;; Copyright Amicale des étudiants de AFI l'UE 2019
                 </div>
             </div>
         </div>

@@ -30,8 +30,9 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        $card = 4;
         $rooms = Room::with('students')->get();
-        return view('welcome',compact('rooms'));
+        return view('welcome',compact('rooms','card'));
     }
 
     public function sector()

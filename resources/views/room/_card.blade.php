@@ -1,20 +1,22 @@
+<div class="col-md-{{$card}}">
 <div class="card">
-    <img src="htttp://picsum.photos/id/400/290/180" class="card-img-top">
     <div class="card-body">
         <div class="card-header"><h4>{{$room->libele}}</h4></div>
-        <p>Nombre d'étudiant: {{ $room->students()->count() }}</p>
+        <p class="mb-1">Nombre d'étudiant: <b>{{ $room->students()->count() }}</b> # 
         @if ($room->complete())
-            <p><span class="badge badge-pill badge-danger"><h4 class="mb-0">X</h4></span> Non Disponible</p>
+            <span class="badge badge-pill badge-danger">véroullée</span>
         @else
-            <p><span class="badge badge-pill badge-success"><h4 class="mb-0">v</h4></span> Disponible</p>
+            <span class="badge badge-pill badge-success">Disponible</span>
         @endif
-        
-        @if ($room->students()->count() > 0)
+        </p>
+        <p class="mt-1">Quantité maximale : <b>{{ $room->qntMax }}</b></p>
         <ul>
-            @foreach ($room->students() as $student)
-            <li>{{ $student->firstname }} {{ $student->lastname }}  {{ $student->niveau()->sigle }} {{ $student->sector()->sigle }} </li>
-            @endforeach
+            @if ($room->students()->count() > 0)
+            @foreach ($room->students as $student)
+                <li>{{ $student->firstname }} - {{ $student->lastname }} - {{ $student->niveau->sigle }} - {{ $student->sector->sigle }} </li>
+                @endforeach
+            @endif
         </ul>
-        @endif
     </div>
+</div>
 </div>

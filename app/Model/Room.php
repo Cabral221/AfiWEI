@@ -2,11 +2,14 @@
 
 namespace App\Model;
 
+use App\Model\Student;
 use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    
+
+    protected $fillable = ['libele','qntMax'];
+
     public function students()
     {
         return $this->hasMany(Student::class);
@@ -19,13 +22,12 @@ class Room extends Model
      */
     public function complete()
     {
-        return $this->students()->count() >= 4 ? true : false;
+        return $this->students()->count() >= $this->qntMax ? true : false;
     }
 
     
     public static function getDisponible()
     {
-
         $roomDis = [];
         $all = self::all();
         foreach ($all as $key => $value) {
